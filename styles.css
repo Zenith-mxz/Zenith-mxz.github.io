@@ -61,18 +61,18 @@ body {
 .form-group input:focus,
 .form-group select:focus {
     outline: none;
-    border-color: #3498db;
+    border-color: #1769a0;
 }
 
 .error-msg {
-    color: #e74c3c;
+    color: #b52b1d;
     font-size: 13px;
     margin-bottom: 15px;
     min-height: 20px;
 }
 
 .success-msg {
-    color: #27ae60;
+    color: #14753d;
     font-size: 13px;
     margin-bottom: 15px;
     min-height: 20px;
@@ -89,17 +89,17 @@ body {
 }
 
 .btn-primary {
-    background: #3498db;
+    background: #1769a0;
     color: white;
     width: 100%;
 }
 
 .btn-primary:hover {
-    background: #2980b9;
+    background: #1b6192;
 }
 
 .btn-secondary {
-    background: #95a5a6;
+    background: #596b6c;
     color: white;
 }
 
@@ -114,7 +114,7 @@ body {
 }
 
 .btn-danger {
-    background: #e74c3c;
+    background: #b52b1d;
     color: white;
 }
 
@@ -130,8 +130,8 @@ body {
 }
 
 .auth-link a {
-    color: #3498db;
-    text-decoration: none;
+    color: #1769a0;
+    text-decoration: underline;
 }
 
 .auth-link a:hover {
@@ -182,7 +182,7 @@ body {
 }
 
 .nav-item.active {
-    background: #3498db;
+    background: #1769a0;
 }
 
 .nav-icon {
@@ -248,15 +248,15 @@ body {
 }
 
 .card-income .card-value {
-    color: #27ae60;
+    color: #14753d;
 }
 
 .card-expense .card-value {
-    color: #e74c3c;
+    color: #b52b1d;
 }
 
 .card-balance .card-value {
-    color: #3498db;
+    color: #1769a0;
 }
 
 .card-ratio .card-value {
@@ -292,7 +292,7 @@ body {
 }
 
 .advice-item.warning {
-    border-left-color: #e74c3c;
+    border-left-color: #b52b1d;
     background: #fdf2f2;
 }
 
@@ -302,7 +302,7 @@ body {
 }
 
 .advice-item.success {
-    border-left-color: #27ae60;
+    border-left-color: #14753d;
     background: #eafaf1;
 }
 
@@ -319,7 +319,7 @@ body {
 
 .advice-item .advice-data {
     font-size: 12px;
-    color: #888;
+    color: #666;
     margin-top: 8px;
     font-style: italic;
 }
@@ -377,22 +377,22 @@ body {
 }
 
 .data-table .type-income {
-    color: #27ae60;
+    color: #14753d;
     font-weight: 500;
 }
 
 .data-table .type-expense {
-    color: #e74c3c;
+    color: #b52b1d;
     font-weight: 500;
 }
 
 .data-table .amount-income {
-    color: #27ae60;
+    color: #14753d;
     font-weight: 600;
 }
 
 .data-table .amount-expense {
-    color: #e74c3c;
+    color: #b52b1d;
     font-weight: 600;
 }
 
@@ -447,7 +447,7 @@ body {
     border: none;
     font-size: 24px;
     cursor: pointer;
-    color: #999;
+    color: #666;
 }
 
 .modal-close:hover {
@@ -573,7 +573,7 @@ body {
 .category-list li button {
     background: none;
     border: none;
-    color: #e74c3c;
+    color: #b52b1d;
     cursor: pointer;
     font-size: 12px;
 }
@@ -595,7 +595,7 @@ body {
 .empty-state {
     text-align: center;
     padding: 60px 20px;
-    color: #999;
+    color: #666;
 }
 
 .empty-state-icon {
@@ -634,9 +634,9 @@ body {
 
 .menu-cat-btn:hover,
 .menu-cat-btn.active {
-    background: #3498db;
+    background: #1769a0;
     color: white;
-    border-color: #3498db;
+    border-color: #1769a0;
 }
 
 .menu-grid {
@@ -681,7 +681,7 @@ body {
 
 .menu-item-desc {
     font-size: 12px;
-    color: #888;
+    color: #666;
     margin-bottom: 10px;
     line-height: 1.4;
     min-height: 34px;
@@ -694,7 +694,7 @@ body {
 }
 
 .menu-item-price {
-    color: #e74c3c;
+    color: #b52b1d;
     font-weight: bold;
     font-size: 16px;
 }
@@ -704,7 +704,7 @@ body {
     height: 32px;
     border-radius: 50%;
     border: none;
-    background: #3498db;
+    background: #1769a0;
     color: white;
     font-size: 20px;
     cursor: pointer;
@@ -715,7 +715,7 @@ body {
 }
 
 .menu-item-add:hover {
-    background: #2980b9;
+    background: #1b6192;
 }
 
 /* 购物车 */
@@ -773,7 +773,7 @@ body {
 
 .cart-item-price {
     font-size: 12px;
-    color: #e74c3c;
+    color: #b52b1d;
 }
 
 .cart-item-qty {
@@ -819,7 +819,7 @@ body {
 }
 
 .cart-total strong {
-    color: #e74c3c;
+    color: #b52b1d;
     font-size: 20px;
 }
 
@@ -856,7 +856,7 @@ body {
 }
 
 .checkout-total strong {
-    color: #e74c3c;
+    color: #b52b1d;
     font-size: 20px;
 }
 
@@ -948,7 +948,7 @@ body {
     text-align: right;
     font-size: 16px;
     font-weight: 600;
-    color: #e74c3c;
+    color: #b52b1d;
     margin-bottom: 12px;
 }
 
@@ -1062,14 +1062,14 @@ body {
 }
 
 .dish-price-display {
-    color: #e74c3c;
+    color: #b52b1d;
     font-weight: 600;
 }
 
 .dish-price-input {
     width: 80px;
     padding: 4px 8px;
-    border: 1px solid #3498db;
+    border: 1px solid #1769a0;
     border-radius: 4px;
     font-size: 14px;
 }
@@ -1149,3 +1149,10 @@ body {
         padding: 8px 6px;
     }
 }
+/* Lucide 图标和键盘焦点 */
+.icon { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; width: 1.2em; height: 1.2em; display: inline-block; vertical-align: -0.2em; flex: none; }
+.nav-item { width: 100%; border: 0; color: inherit; background: transparent; text-align: left; font-family: inherit; }
+.nav-item:focus-visible, button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid #005fcc; outline-offset: 2px; }
+.sidebar .nav-item:focus-visible { outline-color: white; outline-offset: -3px; }
+.menu-item-img .icon { width: 60px; height: 60px; color: white; }
+.empty-state-icon .icon { width: 1em; height: 1em; }

@@ -12,18 +12,18 @@
     <div id="app">
         <!-- 登录页 -->
         <div id="login-page" class="page">
-            <div class="auth-container">
+            <div class="auth-container" role="main">
                 <h1>个人收支管理系统</h1>
                 <form id="login-form">
                     <div class="form-group">
-                        <label>用户名</label>
+                        <label for="login-username">用户名</label>
                         <input type="text" id="login-username" placeholder="请输入用户名" required>
                     </div>
                     <div class="form-group">
-                        <label>密码</label>
+                        <label for="login-password">密码</label>
                         <input type="password" id="login-password" placeholder="请输入密码" required>
                     </div>
-                    <div id="login-error" class="error-msg"></div>
+                    <div id="login-error" class="error-msg" role="alert"></div>
                     <button type="submit" class="btn btn-primary">登录</button>
                     <p class="auth-link">
                         <a href="#" id="to-forgot">忘记密码？</a>
@@ -37,23 +37,23 @@
 
         <!-- 注册页 -->
         <div id="register-page" class="page hidden">
-            <div class="auth-container">
+            <div class="auth-container" role="main">
                 <h1>注册账号</h1>
                 <form id="register-form">
                     <div class="form-group">
-                        <label>用户名</label>
+                        <label for="reg-username">用户名</label>
                         <input type="text" id="reg-username" placeholder="请输入用户名" required>
                     </div>
                     <div class="form-group">
-                        <label>密码</label>
+                        <label for="reg-password">密码</label>
                         <input type="password" id="reg-password" placeholder="至少6位，包含字母和数字" required>
                     </div>
                     <div class="form-group">
-                        <label>确认密码</label>
+                        <label for="reg-confirm">确认密码</label>
                         <input type="password" id="reg-confirm" placeholder="请再次输入密码" required>
                     </div>
                     <div class="form-group">
-                        <label>安全问题</label>
+                        <label for="reg-security-question">安全问题</label>
                         <select id="reg-security-question" required>
                             <option value="">请选择安全问题</option>
                             <option value="pet">您童年宠物的名字是什么？</option>
@@ -64,10 +64,10 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>安全问题答案</label>
+                        <label for="reg-security-answer">安全问题答案</label>
                         <input type="text" id="reg-security-answer" placeholder="请输入答案（用于找回密码）" required>
                     </div>
-                    <div id="reg-error" class="error-msg"></div>
+                    <div id="reg-error" class="error-msg" role="alert"></div>
                     <button type="submit" class="btn btn-primary">注册</button>
                     <p class="auth-link">已有账号？<a href="#" id="to-login">立即登录</a></p>
                 </form>
@@ -76,11 +76,11 @@
 
         <!-- 找回用户名页 -->
         <div id="forgot-username-page" class="page hidden">
-            <div class="auth-container">
+            <div class="auth-container" role="main">
                 <h1>找回用户名</h1>
                 <form id="forgot-username-form">
                     <div class="form-group">
-                        <label>安全问题</label>
+                        <label for="fu-question">安全问题</label>
                         <select id="fu-question" required>
                             <option value="">请选择安全问题</option>
                             <option value="pet">您童年宠物的名字是什么？</option>
@@ -91,11 +91,11 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>安全问题答案</label>
+                        <label for="fu-answer">安全问题答案</label>
                         <input type="text" id="fu-answer" placeholder="请输入答案" required>
                     </div>
-                    <div id="fu-error" class="error-msg"></div>
-                    <div id="fu-success" class="success-msg"></div>
+                    <div id="fu-error" class="error-msg" role="alert"></div>
+                    <div id="fu-success" class="success-msg" role="status"></div>
                     <button type="submit" class="btn btn-primary">找回用户名</button>
                     <p class="auth-link"><a href="#" id="fu-to-login">返回登录</a></p>
                 </form>
@@ -104,15 +104,15 @@
 
         <!-- 重置密码页 -->
         <div id="forgot-password-page" class="page hidden">
-            <div class="auth-container">
+            <div class="auth-container" role="main">
                 <h1>重置密码</h1>
                 <form id="forgot-password-form">
                     <div class="form-group">
-                        <label>用户名</label>
+                        <label for="fp-username">用户名</label>
                         <input type="text" id="fp-username" placeholder="请输入用户名" required>
                     </div>
                     <div class="form-group">
-                        <label>安全问题</label>
+                        <label for="fp-question">安全问题</label>
                         <select id="fp-question" required>
                             <option value="">请选择安全问题</option>
                             <option value="pet">您童年宠物的名字是什么？</option>
@@ -123,19 +123,19 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>安全问题答案</label>
+                        <label for="fp-answer">安全问题答案</label>
                         <input type="text" id="fp-answer" placeholder="请输入答案" required>
                     </div>
                     <div class="form-group">
-                        <label>新密码</label>
+                        <label for="fp-new-password">新密码</label>
                         <input type="password" id="fp-new-password" placeholder="至少6位，包含字母和数字" required>
                     </div>
                     <div class="form-group">
-                        <label>确认新密码</label>
+                        <label for="fp-confirm-password">确认新密码</label>
                         <input type="password" id="fp-confirm-password" placeholder="请再次输入新密码" required>
                     </div>
-                    <div id="fp-error" class="error-msg"></div>
-                    <div id="fp-success" class="success-msg"></div>
+                    <div id="fp-error" class="error-msg" role="alert"></div>
+                    <div id="fp-success" class="success-msg" role="status"></div>
                     <button type="submit" class="btn btn-primary">重置密码</button>
                     <p class="auth-link"><a href="#" id="fp-to-login">返回登录</a></p>
                 </form>
@@ -147,27 +147,13 @@
             <nav class="sidebar">
                 <div class="logo">收支管理</div>
                 <ul class="nav-menu">
-                    <li class="nav-item active" data-page="dashboard">
-                        <span class="nav-icon">📊</span> 仪表盘
-                    </li>
-                    <li class="nav-item" data-page="transactions">
-                        <span class="nav-icon">📝</span> 收支记录
-                    </li>
-                    <li class="nav-item" data-page="statistics">
-                        <span class="nav-icon">📈</span> 统计分析
-                    </li>
-                    <li class="nav-item" data-page="order">
-                        <span class="nav-icon">🍽️</span> 在线点餐
-                    </li>
-                    <li class="nav-item" data-page="orders">
-                        <span class="nav-icon">📋</span> 订单管理
-                    </li>
-                    <li class="nav-item" data-page="advice">
-                        <span class="nav-icon">💡</span> 发展建议
-                    </li>
-                    <li class="nav-item" data-page="settings">
-                        <span class="nav-icon">⚙️</span> 个人设置
-                    </li>
+                    <li><button type="button" class="nav-item active" data-page="dashboard" aria-current="page"><svg class="icon nav-icon" aria-hidden="true" focusable="false"><use href="lucide-icons.svg#chart-no-axes-combined"></use></svg> 仪表盘</button></li>
+                    <li><button type="button" class="nav-item" data-page="transactions"><svg class="icon nav-icon" aria-hidden="true" focusable="false"><use href="lucide-icons.svg#file-text"></use></svg> 收支记录</button></li>
+                    <li><button type="button" class="nav-item" data-page="statistics"><svg class="icon nav-icon" aria-hidden="true" focusable="false"><use href="lucide-icons.svg#chart-line"></use></svg> 统计分析</button></li>
+                    <li><button type="button" class="nav-item" data-page="order"><svg class="icon nav-icon" aria-hidden="true" focusable="false"><use href="lucide-icons.svg#utensils"></use></svg> 在线点餐</button></li>
+                    <li><button type="button" class="nav-item" data-page="orders"><svg class="icon nav-icon" aria-hidden="true" focusable="false"><use href="lucide-icons.svg#clipboard-list"></use></svg> 订单管理</button></li>
+                    <li><button type="button" class="nav-item" data-page="advice"><svg class="icon nav-icon" aria-hidden="true" focusable="false"><use href="lucide-icons.svg#lightbulb"></use></svg> 发展建议</button></li>
+                    <li><button type="button" class="nav-item" data-page="settings"><svg class="icon nav-icon" aria-hidden="true" focusable="false"><use href="lucide-icons.svg#settings"></use></svg> 个人设置</button></li>
                 </ul>
                 <div class="user-info">
                     <span id="current-username"></span>
@@ -217,21 +203,21 @@
                     <div class="toolbar">
                         <button id="add-record-btn" class="btn btn-primary">+ 添加记录</button>
                         <div class="filter-group">
-                            <select id="filter-type">
+                            <select id="filter-type" aria-label="收支类型">
                                 <option value="">全部类型</option>
                                 <option value="income">收入</option>
                                 <option value="expense">支出</option>
                             </select>
-                            <select id="filter-period">
+                            <select id="filter-period" aria-label="时间范围">
                                 <option value="all">全部时间</option>
                                 <option value="month">本月</option>
                                 <option value="3months">近3个月</option>
                                 <option value="6months">近半年</option>
                             </select>
-                            <select id="filter-category">
+                            <select id="filter-category" aria-label="收支类别">
                                 <option value="">全部类别</option>
                             </select>
-                            <input type="text" id="filter-keyword" placeholder="搜索备注...">
+                            <input type="text" id="filter-keyword" aria-label="搜索备注" placeholder="搜索备注...">
                         </div>
                     </div>
                     <table class="data-table">
@@ -253,7 +239,7 @@
                 <div id="statistics-page" class="content-page hidden">
                     <h2>统计分析</h2>
                     <div class="stat-filters">
-                        <select id="stat-period">
+                        <select id="stat-period" aria-label="统计时间范围">
                             <option value="month">本月</option>
                             <option value="3months">近3个月</option>
                             <option value="6months">近半年</option>
@@ -317,7 +303,7 @@
                         </div>
                         <div class="cart-section">
                             <div class="cart-header">
-                                <h3>🛒 购物车</h3>
+                                <h3><svg class="icon " aria-hidden="true" focusable="false"><use href="lucide-icons.svg#shopping-cart"></use></svg> 购物车</h3>
                                 <span id="cart-count">0 件</span>
                             </div>
                             <div class="cart-items" id="cart-items"></div>
@@ -337,7 +323,7 @@
                     <h2>订单管理</h2>
                     <div class="toolbar">
                         <div class="filter-group">
-                            <select id="order-filter-status">
+                            <select id="order-filter-status" aria-label="订单状态">
                                 <option value="">全部状态</option>
                                 <option value="pending">待处理</option>
                                 <option value="cooking">制作中</option>
@@ -345,8 +331,8 @@
                                 <option value="completed">已完成</option>
                                 <option value="cancelled">已取消</option>
                             </select>
-                            <input type="date" id="order-filter-date">
-                            <input type="text" id="order-filter-keyword" placeholder="搜索订单号/桌号/姓名...">
+                            <input type="date" id="order-filter-date" aria-label="订单日期">
+                            <input type="text" id="order-filter-keyword" aria-label="搜索订单" placeholder="搜索订单号/桌号/姓名...">
                         </div>
                     </div>
                     <div id="orders-list" class="orders-list"></div>
@@ -365,18 +351,18 @@
                         <h3>修改密码</h3>
                         <form id="change-password-form">
                             <div class="form-group">
-                                <label>原密码</label>
+                                <label for="old-password">原密码</label>
                                 <input type="password" id="old-password" required>
                             </div>
                             <div class="form-group">
-                                <label>新密码</label>
+                                <label for="new-password">新密码</label>
                                 <input type="password" id="new-password" placeholder="至少6位，包含字母和数字" required>
                             </div>
                             <div class="form-group">
-                                <label>确认新密码</label>
+                                <label for="confirm-new-password">确认新密码</label>
                                 <input type="password" id="confirm-new-password" required>
                             </div>
-                            <div id="pwd-error" class="error-msg"></div>
+                            <div id="pwd-error" class="error-msg" role="alert"></div>
                             <button type="submit" class="btn btn-primary">修改密码</button>
                         </form>
                     </div>
@@ -387,7 +373,7 @@
                                 <h4>收入类别</h4>
                                 <ul id="income-categories-list" class="category-list"></ul>
                                 <div class="add-category">
-                                    <input type="text" id="new-income-category" placeholder="新收入类别">
+                                    <input type="text" id="new-income-category" aria-label="新收入类别" placeholder="新收入类别">
                                     <button id="add-income-category" class="btn btn-small">添加</button>
                                 </div>
                             </div>
@@ -395,7 +381,7 @@
                                 <h4>支出类别</h4>
                                 <ul id="expense-categories-list" class="category-list"></ul>
                                 <div class="add-category">
-                                    <input type="text" id="new-expense-category" placeholder="新支出类别">
+                                    <input type="text" id="new-expense-category" aria-label="新支出类别" placeholder="新支出类别">
                                     <button id="add-expense-category" class="btn btn-small">添加</button>
                                 </div>
                             </div>
@@ -408,7 +394,7 @@
                                 <h4>菜品分类列表</h4>
                                 <ul id="menu-categories-list" class="category-list"></ul>
                                 <div class="add-category">
-                                    <input type="text" id="new-menu-category" placeholder="新菜品分类">
+                                    <input type="text" id="new-menu-category" aria-label="新菜品分类" placeholder="新菜品分类">
                                     <button id="add-menu-category" class="btn btn-small">添加</button>
                                 </div>
                             </div>
@@ -422,7 +408,7 @@
                         <h3>菜品管理</h3>
                         <div class="sync-section" style="margin-bottom: 15px; padding: 10px; background: #f0f8ff; border-radius: 8px;">
                             <button id="sync-menu-btn" class="btn btn-primary" style="width: 100%;">
-                                🔄 强制同步菜单（从云端获取最新菜单）
+                                <svg class="icon " aria-hidden="true" focusable="false"><use href="lucide-icons.svg#refresh-cw"></use></svg> 强制同步菜单（从云端获取最新菜单）
                             </button>
                             <p style="font-size: 12px; color: #666; margin-top: 5px; text-align: center;">
                                 点击此按钮可从云端获取最新菜单数据
@@ -432,11 +418,11 @@
                             <div class="add-dish-form">
                                 <h4>添加新菜品</h4>
                                 <div class="form-row">
-                                    <input type="text" id="new-dish-name" placeholder="菜品名称（如：宫保鸡丁）">
-                                    <input type="number" id="new-dish-price" placeholder="价格（元）" min="0" step="0.01">
-                                    <select id="new-dish-category"></select>
-                                    <input type="text" id="new-dish-desc" placeholder="描述">
-                                    <input type="text" id="new-dish-emoji" placeholder="表情（如：🍗）" maxlength="2">
+                                    <input type="text" id="new-dish-name" aria-label="菜品名称" placeholder="菜品名称（如：宫保鸡丁）">
+                                    <input type="number" id="new-dish-price" aria-label="菜品价格" placeholder="价格（元）" min="0" step="0.01">
+                                    <select id="new-dish-category" aria-label="菜品分类"></select>
+                                    <input type="text" id="new-dish-desc" aria-label="菜品描述" placeholder="描述">
+                                    <select id="new-dish-emoji" aria-label="菜品图标"><option value="utensils">餐具</option><option value="beef">肉类</option><option value="fish">鱼</option><option value="salad">蔬菜</option><option value="soup">汤</option><option value="coffee">饮品</option><option value="cake-slice">甜点</option></select>
                                     <button id="add-dish-btn" class="btn btn-small btn-primary">添加菜品</button>
                                 </div>
                             </div>
@@ -456,8 +442,8 @@
                                 <table class="data-table dish-table">
                                     <thead>
                                         <tr>
-                                            <th style="width: 40px;"><input type="checkbox" id="select-all-header"></th>
-                                            <th>表情</th>
+                                            <th style="width: 40px;"><input type="checkbox" id="select-all-header" aria-label="全选菜品"></th>
+                                            <th>图标</th>
                                             <th>名称</th>
                                             <th>分类</th>
                                             <th>价格</th>
@@ -479,31 +465,31 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h3 id="modal-title">添加记录</h3>
-                    <button class="modal-close">&times;</button>
+                    <button class="modal-close" aria-label="关闭对话框">&times;</button>
                 </div>
                 <form id="record-form">
                     <input type="hidden" id="record-id">
                     <div class="form-group">
-                        <label>类型</label>
+                        <label for="record-type">类型</label>
                         <select id="record-type" required>
                             <option value="income">收入</option>
                             <option value="expense">支出</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>金额</label>
+                        <label for="record-amount">金额</label>
                         <input type="number" id="record-amount" step="0.01" min="0.01" placeholder="请输入金额" required>
                     </div>
                     <div class="form-group">
-                        <label>类别</label>
+                        <label for="record-category">类别</label>
                         <select id="record-category" required></select>
                     </div>
                     <div class="form-group">
-                        <label>日期</label>
+                        <label for="record-date">日期</label>
                         <input type="date" id="record-date" required>
                     </div>
                     <div class="form-group">
-                        <label>备注</label>
+                        <label for="record-note">备注</label>
                         <input type="text" id="record-note" placeholder="可选">
                     </div>
                     <div class="form-actions">
@@ -520,23 +506,23 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h3>确认订单</h3>
-                <button class="modal-close">&times;</button>
+                <button class="modal-close" aria-label="关闭对话框">&times;</button>
             </div>
             <form id="checkout-form">
                 <div class="form-group">
-                    <label>桌号 *</label>
+                    <label for="co-table">桌号 *</label>
                     <input type="text" id="co-table" placeholder="如：A01、二楼3号桌" required>
                 </div>
                 <div class="form-group">
-                    <label>联系人姓名 *</label>
+                    <label for="co-name">联系人姓名 *</label>
                     <input type="text" id="co-name" placeholder="请输入姓名" required>
                 </div>
                 <div class="form-group">
-                    <label>联系电话 *</label>
+                    <label for="co-phone">联系电话 *</label>
                     <input type="tel" id="co-phone" placeholder="请输入手机号" required>
                 </div>
                 <div class="form-group">
-                    <label>备注</label>
+                    <label for="co-note">备注</label>
                     <input type="text" id="co-note" placeholder="如：少辣、不要葱等">
                 </div>
                 <div class="checkout-summary">
@@ -560,7 +546,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h3>订单详情</h3>
-                <button class="modal-close">&times;</button>
+                <button class="modal-close" aria-label="关闭对话框">&times;</button>
             </div>
             <div id="order-detail-content" class="order-detail-content"></div>
         </div>
