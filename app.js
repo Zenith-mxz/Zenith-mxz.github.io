@@ -31,6 +31,16 @@ const Crypto = {
     }
 };
 
+// 已保存的表情仍保留在数据中；显示时使用对应的 Lucide 图标。
+const DISH_ICONS = { '🍗': 'beef', '🥘': 'soup', '🍖': 'beef', '🐟': 'fish', '🥓': 'beef', '🥒': 'salad', '🍄': 'salad', '🐔': 'beef', '🍚': 'utensils', '🍛': 'utensils', '🍜': 'soup', '🍲': 'soup', '🥣': 'soup', '🥤': 'coffee', '🍊': 'coffee', '🍵': 'coffee', '🍮': 'cake-slice', '🍡': 'cake-slice' };
+const DISH_ICON_NAMES = ['utensils', 'beef', 'fish', 'salad', 'soup', 'coffee', 'cake-slice'];
+function icon(name, className = '') {
+    return `<svg class="icon ${className}" aria-hidden="true" focusable="false"><use href="lucide-icons.svg#${name}"></use></svg>`;
+}
+function dishIcon(value) {
+    return icon(DISH_ICONS[value] || (DISH_ICON_NAMES.includes(value) ? value : 'utensils'));
+}
+
 // ==================== 默认数据 ====================
 const DEFAULT_INCOME_CATEGORIES = ['工资', '奖金', '投资收益', '兼职', '礼金', '其他'];
 const DEFAULT_EXPENSE_CATEGORIES = ['餐饮', '交通', '住房', '购物', '娱乐', '医疗', '教育', '其他'];
@@ -149,6 +159,8 @@ function switchPage(pageName) {
     // 更新导航状态
     document.querySelectorAll('.nav-item').forEach(item => {
         item.classList.toggle('active', item.dataset.page === pageName);
+        if (item.dataset.page === pageName) item.setAttribute('aria-current', 'page');
+        else item.removeAttribute('aria-current');
     });
 
     // 切换内容页
@@ -742,7 +754,7 @@ function renderTransactions() {
         tbody.innerHTML = `
             <tr>
                 <td colspan="6" class="empty-state">
-                    <div class="empty-state-icon">📝</div>
+                    <div class="empty-state-icon">${icon('file-text')}</div>
                     <div>暂无收支记录</div>
                 </td>
             </tr>
@@ -1065,7 +1077,7 @@ function renderAdvice() {
     if (advice.length === 0) {
         container.innerHTML = `
             <div class="empty-state">
-                <div class="empty-state-icon">💡</div>
+                <div class="empty-state-icon">${icon('lightbulb')}</div>
                 <div>暂无建议，请添加更多收支记录</div>
             </div>
         `;
@@ -1287,7 +1299,7 @@ function bindSettingsEvents() {
     if (syncBtn) {
         syncBtn.addEventListener('click', async () => {
             syncBtn.disabled = true;
-            syncBtn.textContent = '🔄 正在同步...';
+            syncBtn.innerHTML = icon('refresh-cw') + ' 正在同步...';
             
             try {
                 await fetchMenuFromSupabase();
@@ -1297,7 +1309,7 @@ function bindSettingsEvents() {
                 alert('同步失败，请检查网络连接');
             } finally {
                 syncBtn.disabled = false;
-                syncBtn.textContent = '🔄 强制同步菜单（从云端获取最新菜单）';
+                syncBtn.innerHTML = icon('refresh-cw') + ' 强制同步菜单（从云端获取最新菜单）';
             }
         });
     }
@@ -1509,7 +1521,7 @@ function addDish() {
     const price = parseFloat(priceInput.value);
     const category = categorySelect.value;
     const desc = descInput.value.trim();
-    const emoji = emojiInput.value.trim() || '🍽️';
+    const emoji = emojiInput.value || 'utensils';
 
     if (!name) {
         alert('请输入菜品名称');
@@ -1544,7 +1556,7 @@ function addDish() {
     nameInput.value = '';
     priceInput.value = '';
     descInput.value = '';
-    emojiInput.value = '';
+    emojiInput.value = 'utensils';
 
     renderDishList();
     renderMenuCategoryLists();
@@ -1559,7 +1571,7 @@ function renderDishList() {
         tbody.innerHTML = `
             <tr>
                 <td colspan="7" class="empty-state">
-                    <div class="empty-state-icon">🍽️</div>
+                    <div class="empty-state-icon">${icon('utensils')}</div>
                     <div>暂无菜品</div>
                 </td>
             </tr>
@@ -1569,8 +1581,8 @@ function renderDishList() {
 
     tbody.innerHTML = items.map(item => `
         <tr data-dish-id="${item.id}">
-            <td><input type="checkbox" class="dish-checkbox" value="${item.id}"></td>
-            <td>${item.emoji}</td>
+            <td><input type="checkbox" class="dish-checkbox" value="${item.id}" aria-label="选择 ${item.name}"></td>
+            <td>${dishIcon(item.emoji)}</td>
             <td>${item.name}</td>
             <td>${item.category}</td>
             <td class="dish-price-cell">
@@ -2193,7 +2205,7 @@ function renderMenu() {
         : items.filter(item => item.category === currentMenuCategory);
 
     if (filtered.length === 0) {
-        grid.innerHTML = '<div class="empty-state" style="grid-column: 1/-1;"><div class="empty-state-icon">🍽️</div><div>暂无菜品</div></div>';
+        grid.innerHTML = `<div class="empty-state" style="grid-column: 1/-1;"><div class="empty-state-icon">${icon('utensils')}</div><div>暂无菜品</div></div>`;
         return;
     }
 
@@ -2201,7 +2213,7 @@ function renderMenu() {
         const inCart = cart.find(c => c.id === item.id);
         return `
             <div class="menu-item">
-                <div class="menu-item-img">${item.emoji}</div>
+                <div class="menu-item-img">${dishIcon(item.emoji)}</div>
                 <div class="menu-item-info">
                     <div class="menu-item-name">${item.name}</div>
                     <div class="menu-item-desc">${item.desc}</div>
@@ -2209,11 +2221,11 @@ function renderMenu() {
                         <div class="menu-item-price">¥${item.price}</div>
                         ${inCart
                             ? `<div class="cart-item-qty">
-                                <button onclick="updateCartQty('${item.id}', -1)">−</button>
+                                <button aria-label="减少 ${item.name} 的数量" onclick="updateCartQty('${item.id}', -1)">−</button>
                                 <span>${inCart.qty}</span>
-                                <button onclick="updateCartQty('${item.id}', 1)">+</button>
+                                <button aria-label="增加 ${item.name} 的数量" onclick="updateCartQty('${item.id}', 1)">+</button>
                             </div>`
-                            : `<button class="menu-item-add" onclick="addToCart('${item.id}')">+</button>`
+                            : `<button class="menu-item-add" aria-label="添加 ${item.name} 到购物车" onclick="addToCart('${item.id}')">+</button>`
                         }
                     </div>
                 </div>
@@ -2263,7 +2275,7 @@ function renderCart() {
     totalEl.textContent = formatMoney(totalPrice);
 
     if (cart.length === 0) {
-        container.innerHTML = '<div class="empty-state" style="padding: 30px 10px;"><div class="empty-state-icon" style="font-size: 32px;">🛒</div><div style="font-size: 13px;">购物车是空的</div></div>';
+        container.innerHTML = `<div class="empty-state" style="padding: 30px 10px;"><div class="empty-state-icon" style="font-size: 32px;">${icon('shopping-cart')}</div><div style="font-size: 13px;">购物车是空的</div></div>`;
         return;
     }
 
@@ -2274,9 +2286,9 @@ function renderCart() {
                 <div class="cart-item-price">¥${item.price}</div>
             </div>
             <div class="cart-item-qty">
-                <button onclick="updateCartQty('${item.id}', -1)">−</button>
+                <button aria-label="减少 ${item.name} 的数量" onclick="updateCartQty('${item.id}', -1)">−</button>
                 <span>${item.qty}</span>
-                <button onclick="updateCartQty('${item.id}', 1)">+</button>
+                <button aria-label="增加 ${item.name} 的数量" onclick="updateCartQty('${item.id}', 1)">+</button>
             </div>
         </div>
     `).join('');
@@ -2411,7 +2423,7 @@ function renderOrders() {
     if (orders.length === 0) {
         container.innerHTML = `
             <div class="empty-state">
-                <div class="empty-state-icon">📋</div>
+                <div class="empty-state-icon">${icon('clipboard-list')}</div>
                 <div>暂无订单</div>
             </div>
         `;
@@ -2427,10 +2439,10 @@ function renderOrders() {
                     <span class="order-card-status ${status.class}">${status.label}</span>
                 </div>
                 <div class="order-card-info">
-                    <span>📅 ${new Date(order.createdAt).toLocaleString('zh-CN')}</span>
-                    <span>🪑 ${order.table}</span>
-                    <span>👤 ${order.customerName}</span>
-                    <span>📞 ${order.phone}</span>
+                    <span>${icon('calendar-days')} ${new Date(order.createdAt).toLocaleString('zh-CN')}</span>
+                    <span>${icon('armchair')} ${order.table}</span>
+                    <span>${icon('user-round')} ${order.customerName}</span>
+                    <span>${icon('phone')} ${order.phone}</span>
                 </div>
                 <div class="order-card-items">
                     ${order.items.map(i => `
